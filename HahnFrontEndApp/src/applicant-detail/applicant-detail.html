@@ -1,0 +1,69 @@
+<template>
+  <div class="card">
+    <div class="alert alert-success" role="alert" show.bind="showSuccess" t="save_success">
+      Applicant Saved Sucessfully!
+    </div>
+    <div class="alert alert-danger" role="alert" show.bind="showFail" t="save_fail">
+      Error occured while saving data
+    </div>
+    <div class="card-header text-white bg-primary"  t="profile" profile>
+      Profile
+    </div>
+    <div class="card-body">
+      <form role="form">
+        <ul><li repeat.for="error of controller.errors">${error.message}</li></ul>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="name">First Name</label>
+          <div class="col-md-9">
+            <input type="text" t="[placeholder]name" class="form-control" value.bind="applicant.Name & validate">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="family_name">Family Name</label>
+          <div class="col-md-9">
+            <input type="text" t="[placeholder]family_name" class="form-control" value.bind="applicant.FamilyName & validate">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="address">Address</label>
+          <div class="col-md-9">
+            <input type="text" t="[placeholder]address" class="form-control" value.bind="applicant.Address & validate">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="country">Country of Origin</label>
+          <div class="col-md-9">
+            <input type="text" t="[placeholder]country" class="form-control" value.bind="applicant.CountryOfOrigin & validate">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="email">Email</label>
+          <div class="col-md-9">
+            <input type="text" t="[placeholder]email" class="form-control" value.bind="applicant.EmailAdress & validate">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="age">Age</label>
+          <div class="col-md-9">
+            <input type="text" t="[placeholder]age" class="form-control" value.bind="applicant.Age & validate">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" t="hired">Is Hired ?</label>
+          <div class="col-md-9">
+            <label>
+              <input type="radio" name="group1" model.bind="false" checked.bind="applicant.Hired"> No
+            </label>
+            <label>
+              <input type="radio" name="group1" model.bind="true" checked.bind="applicant.Hired"> Yes
+            </label>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-success float-right" click.delegate="save()" disabled.bind="!canSave" t="save">Save</button>
+        </div>
+    </div>
+  </div>
+</template>
